@@ -106,7 +106,7 @@ async function registerFoodPartner(req,res){
     })
 
     const token=jwt.sign({
-        id:foodParter._id,
+        id:foodPartner._id,
     },process.env.JWT_SECRET)
 
     res.cookie("token",token)
