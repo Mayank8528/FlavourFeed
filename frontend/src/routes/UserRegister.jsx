@@ -17,7 +17,8 @@ const UserRegister = () => {
     }
 
     try {
-      const registerPath = import.meta.env.VITE_REGISTER_PATH || '/user/register';
+      // Backend mounts auth routes at /api/auth, so default to /auth/user/register under the client baseURL
+      const registerPath = import.meta.env.VITE_REGISTER_PATH || '/auth/user/register';
       let res = await client.post(registerPath, { fullName, email, password });
 
       // If 404, try a common alternative
