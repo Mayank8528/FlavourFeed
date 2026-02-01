@@ -11,17 +11,42 @@ const FoodPartnerRegister = () => {
           <p className="auth-subtitle">Join FlavourFeed as a food partner.</p>
         </header>
 
-        <form className="auth-form" onSubmit={(e) => e.preventDefault()}>
-          <label className="label" htmlFor="restaurant">Restaurant name</label>
-          <input className="input" id="restaurant" name="restaurant" type="text" placeholder="Taste Hub" autoComplete="organization" />
+        <form
+          className="auth-form"
+          onSubmit={(e) => e.preventDefault()}
+          style={{ display: 'grid', gridTemplateColumns: 'repeat(2, minmax(0, 1fr))', gap: '16px' }}
+        >
+          <div className="field" style={{ display: 'flex', flexDirection: 'column', gridColumn: '1 / -1' }}>
+            <label className="label" htmlFor="businessName">Business name</label>
+            <input className="input" id="businessName" name="businessName" type="text" placeholder="Taste Hub" autoComplete="organization" />
+          </div>
 
-          <label className="label" htmlFor="email">Contact email</label>
-          <input className="input" id="email" name="email" type="email" placeholder="contact@tastehub.com" autoComplete="email" />
+          <div className="field" style={{ display: 'flex', flexDirection: 'column' }}>
+            <label className="label" htmlFor="contactName">Contact Name</label>
+            <input className="input" id="contactName" name="contactName" type="text" placeholder="Jane Doe" autoComplete="name" />
+          </div>
 
-          <label className="label" htmlFor="password">Password</label>
-          <input className="input" id="password" name="password" type="password" placeholder="••••••••" autoComplete="new-password" />
+          <div className="field" style={{ display: 'flex', flexDirection: 'column' }}>
+            <label className="label" htmlFor="phone">Phone</label>
+            <input className="input" id="phone" name="phone" type="tel" placeholder="(555) 123-4567" autoComplete="tel" />
+          </div>
 
-          <button className="button" type="submit">Create partner account</button>
+          <div className="field" style={{ display: 'flex', flexDirection: 'column' }}>
+            <label className="label" htmlFor="email">Email</label>
+            <input className="input" id="email" name="email" type="email" placeholder="contact@tastehub.com" autoComplete="email" />
+          </div>
+
+          <div className="field" style={{ display: 'flex', flexDirection: 'column' }}>
+            <label className="label" htmlFor="password">Password</label>
+            <input className="input" id="password" name="password" type="password" placeholder="••••••••" autoComplete="new-password" />
+          </div>
+
+          <div className="field" style={{ display: 'flex', flexDirection: 'column', gridColumn: '1 / -1' }}>
+            <label className="label" htmlFor="address">Address</label>
+            <input className="input" id="address" name="address" type="text" placeholder="123 Market St, City" autoComplete="street-address" />
+          </div>
+
+          <button className="button" type="submit" style={{ gridColumn: '1 / -1' }}>Create partner account</button>
         </form>
 
         <hr className="sep" />
