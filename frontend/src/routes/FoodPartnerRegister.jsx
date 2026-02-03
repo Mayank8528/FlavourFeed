@@ -1,8 +1,34 @@
 import React from 'react'
 import { Link } from 'react-router-dom'
 import '../styles/auth.css'
+import client from '../api/client.js';
 
 const FoodPartnerRegister = () => {
+  const handleSubmit = async(e) =>{
+    e.preventDefault();
+
+    const name = e.target.businessName?.value?.trim();
+    const contactName = e.target.contactName?.value?.trim();
+    const phone = e.target.phone?.value?.trim();
+    const email = e.target.email?.value?.trim();
+    const password = e.target.password?.value?.trim();
+    const address = e.target.address?.value?.trim();
+
+    try{
+      const path= '/auth/food-partner/register';
+      const res = await client.post(path , {name, contactName, phone, email, password, address});
+      if(res.status >= 200){
+        alert('Registration successful');
+      }
+      else{
+        alert('Registration failed');
+      }
+    }
+    catch(err){
+      logger.error(err);
+      alert(err?.response?.data?.message || 'Registration failed. Please try again.');
+    }
+  }
   return (
     <div className="auth-wrap">
       <div className="auth-card" role="region" aria-labelledby="fp-register-title">
@@ -13,7 +39,7 @@ const FoodPartnerRegister = () => {
 
         <form
           className="auth-form"
-          onSubmit={(e) => e.preventDefault()}
+          onSubmit={handleSubmit}
           style={{ display: 'grid', gridTemplateColumns: 'repeat(2, minmax(0, 1fr))', gap: '16px' }}
         >
           <div className="field" style={{ display: 'flex', flexDirection: 'column', gridColumn: '1 / -1' }}>
